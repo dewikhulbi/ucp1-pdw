@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Booking</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<style>
+    body {
+    background-color: #87CEEB;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #1E90FF;
+}
+
+.buttons, .ticket-list, .support-section, .status {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    color: white;
+    background-color: #1E90FF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #4682B4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ticket {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.message {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+</style>
+<script>
+    function trackBooking(event) {
+    event.preventDefault();
+    const bookingId = document.getElementById('bookingId').value;
+    const bookingStatusDiv = document.getElementById('bookingStatus');
+
+    // Simulate tracking booking status
+    // In a real application, you would make an API call to the server to get the status
+    const mockStatus = "Your booking is confirmed. Flight details: Flight 101, Departure: 2024-06-21 10:00 AM";
+
+    bookingStatusDiv.innerHTML = `<p><strong>Status for Booking ID ${bookingId}:</strong> ${mockStatus}</p>`;
+}
+
+</script>
+<body>
+    <div class="container">
+        <h2>Track Your Booking</h2>
+        <form onsubmit="trackBooking(event)">
+            <input type="text" id="bookingId" placeholder="Booking ID" required>
+            <button type="submit">Track</button>
+        </form>
+        <div id="bookingStatus" class="status">
+            <!-- Booking status will be displayed here -->
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

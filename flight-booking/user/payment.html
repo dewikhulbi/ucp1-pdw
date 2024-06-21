@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .payment-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1E90FF;
+        }
+        .payment-details {
+            margin-top: 20px;
+        }
+        .payment-details p {
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            color: white;
+            background-color: #1E90FF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0e71c8;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Payment Details</h1>
+        <div class="payment-details">
+            <p><strong>Name:</strong> <span id="firstName"></span> <span id="lastName"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>From:</strong> <span id="departure"></span></p>
+            <p><strong>To:</strong> <span id="destination"></span></p>
+            <p><strong>Departure:</strong> <span id="date"></span></p>
+            <p><strong>Class:</strong> <span id="ticketType"></span></p>
+            <p><strong>Price:</strong> <span id="price"></span></p>
+        </div>
+        <!-- Placeholder for payment form or button -->
+        <button class="btn" id="proceedButton">Proceed to Payment</button>
+    </div>
+
+    <script>
+        // Mengambil nilai dari localStorage
+        var firstName = localStorage.getItem('firstName');
+        var lastName = localStorage.getItem('lastName');
+        var email = localStorage.getItem('email');
+        var departure = localStorage.getItem('departure');
+        var destination = localStorage.getItem('destination');
+        var ticketType = localStorage.getItem('ticketType');
+        var date = localStorage.getItem('date');
+        var price = localStorage.getItem('price');
+
+        // Mengisikan nilai ke dalam elemen HTML di halaman payment.html
+        document.getElementById('firstName').textContent = firstName;
+        document.getElementById('lastName').textContent = lastName;
+        document.getElementById('email').textContent = email;
+        document.getElementById('departure').textContent = departure;
+        document.getElementById('destination').textContent = destination;
+        document.getElementById('ticketType').textContent = ticketType;
+        document.getElementById('date').textContent = date;
+        document.getElementById('price').textContent = price;
+
+        // Hapus data dari localStorage setelah digunakan
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('lastName');
+        localStorage.removeItem('email');
+        localStorage.removeItem('departure');
+        localStorage.removeItem('destination');
+        localStorage.removeItem('ticketType');
+        localStorage.removeItem('date');
+        localStorage.removeItem('price');
+
+        // Menambahkan event listener pada tombol "Proceed to Payment"
+        document.getElementById('proceedButton').addEventListener('click', function() {
+            // Tampilkan pesan bahwa tiket telah terpesan
+            alert('Tiket telah berhasil dipesan!');
+
+            // Redirect ke halaman index.html
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

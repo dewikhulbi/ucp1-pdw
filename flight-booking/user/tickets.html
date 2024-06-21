@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tickets</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background-color: #87CEEB;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        h2 {
+            color: #1E90FF;
+        }
+
+        .ticket-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .ticket {
+            flex: 0 0 calc(33.33% - 20px); /* Mengatur lebar setiap tiket */
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+            background-color: #f9f9f9; /* Warna latar belakang tiket */
+        }
+
+        .ticket p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            color: white;
+            background-color: #1E90FF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0e71c8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Tickets</h2>
+        <div class="ticket-list">
+            <!-- Example of a ticket -->
+            <div class="ticket">
+                <p><strong>Flight:</strong> Lion Air JT-279</p>
+                <p><strong>From:</strong> City A</p>
+                <p><strong>To:</strong> City B</p>
+                <p><strong>Departure:</strong> 2024-06-21 10:00 AM</p>
+                <p><strong>Price:</strong> 2.800.000</p>
+                <button class="btn" onclick="selectTicket('Lion Air JT-279')">Select</button>
+            </div>
+
+            <div class="ticket">
+                <p><strong>Flight:</strong> Pelita Air JT-672</p>
+                <p><strong>From:</strong> City A</p>
+                <p><strong>To:</strong> City B</p>
+                <p><strong>Departure:</strong> 2024-06-21 10:00 AM</p>
+                <p><strong>Price:</strong> 1.729.200</p>
+                <button class="btn" onclick="selectTicket('Pelita Air JT-672')">Select</button>
+            </div>
+
+            <div class="ticket">
+                <p><strong>Flight:</strong> Garuda Indonesia GA-206</p>
+                <p><strong>From:</strong> City A</p>
+                <p><strong>To:</strong> City B</p>
+                <p><strong>Departure:</strong> 2024-06-21 10:00 AM</p>
+                <p><strong>Price:</strong> 1.729.200</p>
+                <button class="btn" onclick="selectTicket('Garuda Indonesia GA-206')">Select</button>
+            </div>
+
+            <div class="ticket">
+                <p><strong>Flight:</strong> Super Air Jet IU-865</p>
+                <p><strong>From:</strong> City A</p>
+                <p><strong>To:</strong> City B</p>
+                <p><strong>Departure:</strong> 2024-06-21 10:00 AM</p>
+                <p><strong>Price:</strong> 2.408.000</p>
+                <button class="btn" onclick="selectTicket('Super Air Jet IU-865')">Select</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    function selectTicket(flightNumber) {
+        // Navigasi ke halaman details.html dengan menyertakan parameter flight
+        window.location.href = `details.html?flight=${encodeURIComponent(flightNumber)}`;
+    }
+
+    </script>
+</body>
+</html>

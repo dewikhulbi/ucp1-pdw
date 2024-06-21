@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Flights</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background-color: #87CEEB;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto; /* Center align container */
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+
+        h1, h2, h3 {
+            color: #1E90FF;
+        }
+
+        .buttons, .ticket-list, .support-section, .status, .add-flight, .flight-list {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            color: white;
+            background-color: #1E90FF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        input[type="text"], input[type="password"], input[type="datetime-local"], input[type="number"], textarea {
+            width: calc(100% - 20px); /* Adjust input width */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+
+        button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #4682B4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .flight {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            /* Adjust styles for smaller screens */
+            .container {
+                padding: 10px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Flights</h2>
+        <div class="add-flight">
+            <h3>Add New Flight</h3>
+            <form onsubmit="addFlight(event)">
+                <input type="text" id="flightNumber" placeholder="Flight Number" required>
+                <input type="text" id="fromCity" placeholder="From City" required>
+                <input type="text" id="toCity" placeholder="To City" required>
+                <input type="datetime-local" id="departureTime" required>
+                <input type="number" id="price" placeholder="Price" required>
+                <button type="submit">Add Flight</button>
+            </form>
+        </div>
+        <div class="flight-list">
+            <h3>Current Flights</h3>
+            <div id="flightsContainer">
+                <!-- Example flight list -->
+                <div class="flight" id="Flight 101">
+                    <p><strong>Flight:</strong> Flight 101</p>
+                    <p><strong>From:</strong> City A</p>
+                    <p><strong>To:</strong> City B</p>
+                    <p><strong>Departure:</strong> 2024-06-21 10:00 AM</p>
+                    <p><strong>Price:</strong> $150</p>
+                    <button class="btn" onclick="deleteFlight('Flight 101')">Delete</button>
+                </div>
+                <!-- Add more flights as needed -->
+            </div>
+        </div>
+    </div>
+    <script>
+        function addFlight(event) {
+            event.preventDefault();
+
+            const flightNumber = document.getElementById('flightNumber').value;
+            const fromCity = document.getElementById('fromCity').value;
+            const toCity = document.getElementById('toCity').value;
+            const departureTime = document.getElementById('departureTime').value;
+            const price = document.getElementById('price').value;
+
+            // Create new flight element
+            const newFlight = document.createElement('div');
+            newFlight.className = 'flight';
+            newFlight.id = flightNumber;
+            newFlight.innerHTML = `
+                <p><strong>Flight:</strong> ${flightNumber}</p>
+                <p><strong>From:</strong> ${fromCity}</p>
+                <p><strong>To:</strong> ${toCity}</p>
+                <p><strong>Departure:</strong> ${new Date(departureTime).toLocaleString()}</p>
+                <p><strong>Price:</strong> $${price}</p>
+                <button class="btn" onclick="deleteFlight('${flightNumber}')">Delete</button>
+            `;
+
+            // Add the new flight to the flights container
+            document.getElementById('flightsContainer').appendChild(newFlight);
+
+            // Clear the form
+            document.getElementById('flightNumber').value = '';
+            document.getElementById('fromCity').value = '';
+            document.getElementById('toCity').value = '';
+            document.getElementById('departureTime').value = '';
+            document.getElementById('price').value = '';
+
+            alert(`Flight ${flightNumber} added!`);
+        }
+
+        function deleteFlight(flightNumber) {
+            // Remove the flight element from the DOM
+            const flightElement = document.getElementById(flightNumber);
+            if (flightElement) {
+                flightElement.remove();
+                alert(`Flight ${flightNumber} deleted!`);
+            }
+        }
+    </script>
+</body>
+</html>
